@@ -1,46 +1,25 @@
 var ListController = {
     
-    init: function() {
+    init: function(params) {
         ListController.setForm();
     },
     
-    setForm: function() {
+    setForm: function () {
         var form = document.getElementById('form-name');
-        form.addEventListener('submit', ListController.handleEventSubmit);  
-    },
-        
-    handleEventSubmit: function(event) {
-        console.log('Trigged');
-        var inputName = document.getElementById('name');
-        console.log(inputName.value);
-        inputName.value = "";
-        event.preventDefault();
+        form.addEventListener('submit', ListController.eventSubmitHandler);
     },
     
-    //TODO move it to HtmlService.js
+    eventSubmitHandler: function (event) {
+        event.preventDefault(); //we need this to avoid the form submittion to a server
+        var inputName = document.getElementById('name');
+        ListController.addName(inputName.value);
+        inputName.value = "";
+    },
+    
     addName: function(name) {
         ListService.addName(name);
-        ListController.displayAddedName(name);
+        HTMLService.displayAddedName(name);
     },
-    
-    displayAddedName: function(text) {
-        //TODO move it to HtmlService.js
-        var li = ListController.createListItem(text);
-        ListController.addToList(li);
-    },
-
-    //TODO move it to HtmlService.js
-    createListItem: function(text) {
-        var li = document.createElement('li');
-        li.innerHTML = text;
-        return li;
-    },
-
-    //TODO move it to HtmlService.js
-    addToList: function(listItem) {
-        var ul = document.getElementById('list-name');
-        ul.appendChild(li);
-    }
     
 };
 

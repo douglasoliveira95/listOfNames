@@ -1,20 +1,21 @@
+
 var ListService = {
-   
-    names:[],
-    
-    getList: function() {
-        return ListService.names;    
-    }
-    
-    addName: function(name) {
+
+    names: [],
+
+    getList: function () {
+        return ListService.names;
+    },
+
+    addName: function (name) {
         ListService.names.push(name);
-    }
+    },
 
-    loadNames(): function() {
-        //TODO
-    }
+    loadNames: function () {
+        //TODO to be implemented   
+    },
 
-    saveNames(): function() {
-        //TODO
+    saveNames: function () {
+        //TODO to be implemented
     }
 };
